@@ -1,183 +1,165 @@
-import { useState } from 'react'
-import { TrendingUp, Briefcase, ShoppingCart, ShieldCheck, Database, Server, Smartphone } from 'lucide-react'
+import { useState, useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
 
-const sectorData = [
+const SECTOR_DATA = [
   {
-    id: 's1',
-    short: '01 Fast-Growth Startups',
-    headline: 'Innovative Technology Platforms for Rapid Scale',
-    paragraph:
-      'Engineered for high-velocity tech startups to deploy clean code architecture and scalable database structures, shifting gracefully from initial MVP architectures toward reliable enterprise-grade system loads.',
-    badges: ['SaaS Startups', 'AI/ML Innovations', 'EdTech Platforms', 'HealthTech Systems'],
-    icon: TrendingUp,
+    id: "startups",
+    num: "01",
+    tabLabel: "Fast-Growth Startups",
+    title: "Innovative Technology Platforms for Rapid Scale",
+    desc: "Engineered for high-velocity tech startups to deploy clean code architecture and scalable database structures, shifting gracefully from initial MVP architectures toward reliable enterprise-grade system loads.",
+    badges: ["SaaS Startups", "AI/ML Innovations", "EdTech Platforms", "HealthTech Systems"]
   },
   {
-    id: 's2',
-    short: '02 SMEs & Industrial Units',
-    headline: 'Digitizing Workflows and Operational Logistics',
-    paragraph:
-      'Streamline traditional business frameworks, optimize floor resource paths, and accelerate live industrial vendor communication. Implement automated digital tools that enhance daily corporate efficiency and lower running costs.',
-    badges: ['SMEs and MSMEs', 'Manufacturing Plants', 'Logistics & Supply Chain', 'Real Estate Channels'],
-    icon: Briefcase,
+    id: "smes",
+    num: "02",
+    tabLabel: "SMEs & Industrial Units",
+    title: "Digitizing Workflows and Operational Logistics",
+    desc: "Streamline traditional business frameworks, optimize floor resource paths, and accelerate live industrial vendor communication. Implement automated digital tools that enhance daily corporate efficiency and lower running costs.",
+    badges: ["SMEs and MSMEs", "Manufacturing Plants", "Logistics & Supply Chain", "Real Estate Channels"]
   },
   {
-    id: 's3',
-    short: '03 Retail & E-Commerce',
-    headline: 'Conversational Commerce & Unified Retail Retention',
-    paragraph:
-      'Transform how brands communicate and transact with global audiences. Move order pipelines directly onto fast automated channels like WhatsApp, handling promotions, instant updates, and checkout paths natively.',
-    badges: ['Retail Brands', 'E-Commerce Stores', 'FoodTech Portals', 'Hospitality Platforms'],
-    icon: ShoppingCart,
+    id: "retail",
+    num: "03",
+    tabLabel: "Retail & E-Commerce",
+    title: "Conversational Commerce & Unified Retail Retention",
+    desc: "Transform how brands communicate and transact with global audiences. Move order pipelines directly onto fast automated channels like WhatsApp, handling promotions, instant updates, and checkout paths natively.",
+    badges: ["Retail Brands", "E-Commerce Stores", "FoodTech Portals", "Hospitality Platforms"]
   },
   {
-    id: 's4',
-    short: '04 GovTech & Public Utilities',
-    headline: 'Secure Enterprise Systems for Public Services',
-    paragraph:
-      'Formulated using rigorous data protection rules and enterprise security backends. Providing robust tech solutions for citizen applications, tax departments, and municipal resource structures to increase speed and civic compliance.',
-    badges: ['Government Departments', 'Public Utilities', 'Revenue & Tax', 'Citizen Services'],
-    icon: ShieldCheck,
-  },
-]
+    id: "govtech",
+    num: "04",
+    tabLabel: "GovTech & Public Utilities",
+    title: "Secure Enterprise Systems for Public Services",
+    desc: "Formulated using rigorous data protection rules and enterprise security backends. Providing robust tech solutions for citizen applications, tax departments, and municipal resource structures to increase speed and civic compliance.",
+    badges: ["Government Departments", "Public Utilities", "Revenue & Tax", "Citizen Services"]
+  }
+];
 
-const Pill = ({ children }) => (
-  <span className="inline-block bg-slate-100 text-slate-700 text-xs px-3 py-1 rounded-full">{children}</span>
-)
+// Helper Component for Individual Tracking Cards
+const SectorCard = ({ sector, onVisible }) => {
+  const cardRef = useRef(null);
 
-const Sectors = () => {
-  const [activeSector, setActiveSector] = useState(sectorData[0].id)
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        // If the card is occupying the sweet spot of the viewport, update parent state
+        if (entry.isIntersecting) {
+          onVisible(sector.id);
+        }
+      },
+      {
+        // Adjust threshold and rootMargin so the tab swaps precisely when the container passes the top-middle screen area
+        rootMargin: "-25% 0px -65% 0px",
+        threshold: 0
+      }
+    );
 
-  const active = sectorData.find(s => s.id === activeSector)
+    if (cardRef.current) observer.observe(cardRef.current);
+    return () => observer.disconnect();
+  }, [sector.id, onVisible]);
 
   return (
-    <section className="py-16 bg-gray-50">
-      <div className="max-w-6xl mx-auto px-4">
-        <h2 className="text-center text-2xl md:text-3xl font-extrabold mb-2">Sectors We Serve</h2>
-        <p className="text-center text-sm text-slate-500 mb-8">Chosen by innovators to build smarter futures.</p>
+    <div 
+      id={sector.id} 
+      ref={cardRef}
+      className="min-h-[70vh] flex flex-col justify-center scroll-mt-28 first:mt-0 last:mb-24"
+    >
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 bg-white border border-slate-100 p-8 md:p-10 rounded-3xl shadow-sm">
+        {/* Left: Copywriting Text Info */}
+        <div className="flex flex-col justify-between space-y-6">
+          <div className="space-y-4">
+            <span className="text-xs font-mono font-bold text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full">
+              {sector.num}
+            </span>
+            <h3 className="text-2xl font-bold text-slate-900 leading-tight">
+              {sector.title}
+            </h3>
+            <p className="text-slate-500 leading-relaxed text-sm">
+              {sector.desc}
+            </p>
+          </div>
+          
+          <div className="flex flex-wrap gap-2 pt-4">
+            {sector.badges.map((badge, idx) => (
+              <span key={idx} className="text-xs bg-slate-50 text-slate-600 border border-slate-100 px-3 py-1.5 rounded-xl font-medium">
+                {badge}
+              </span>
+            ))}
+          </div>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          {/* Left navigation */}
-          <aside className="md:col-span-1">
-            <div className="sticky top-28 bg-white rounded-xl p-4 shadow">
-              <nav className="flex flex-col gap-3">
-                {sectorData.map((s, idx) => {
-                  const Icon = s.icon
-                  const isActive = s.id === activeSector
-                  return (
-                    <button
-                      key={s.id}
-                      onClick={() => setActiveSector(s.id)}
-                      className={`relative flex items-center gap-3 w-full text-left rounded-lg px-3 py-3 transition-all ${
-                        isActive ? 'bg-indigo-600 text-white shadow-md' : 'bg-transparent text-slate-700 hover:bg-slate-50'
-                      }`}
-                    >
-                      <span className={`w-0.5 h-8 mr-3 rounded ${isActive ? 'bg-indigo-400' : 'bg-transparent'}`} />
-                      <div className="flex items-center gap-3">
-                        <Icon className={`h-5 w-5 ${isActive ? 'text-white' : 'text-indigo-600'}`} />
-                        <div>
-                          <div className={`text-xs ${isActive ? 'text-indigo-100' : 'text-slate-400'}`}>{s.short.split(' ')[0]}</div>
-                          <div className={`text-sm font-medium ${isActive ? 'text-white' : 'text-slate-700'}`}>{s.short.replace(/^[0-9]{2}\s*/,'')}</div>
-                        </div>
-                      </div>
-                    </button>
-                  )
-                })}
-              </nav>
-            </div>
-          </aside>
-
-          {/* Right content area */}
-          <main className="md:col-span-3">
-            <div className="bg-white rounded-2xl p-8 shadow-lg transition-all duration-500">
-              <div className="flex flex-col md:flex-row gap-6">
-                <div className="flex-1">
-                  <h3 className="text-2xl font-bold text-slate-900 mb-3 transition-colors duration-300">{active.headline}</h3>
-                  <p className="text-sm text-slate-600 mb-4">{active.paragraph}</p>
-
-                  <div className="flex flex-wrap gap-3 mt-3">
-                    {active.badges.map((b,i) => (
-                      <Pill key={i}>{b}</Pill>
-                    ))}
-                  </div>
-
-                  <div className="mt-6 space-y-3">
-                    <a className="inline-flex items-center gap-2 text-indigo-600 font-medium" href="#contact">
-                      Learn how we implement this <span className="ml-1">→</span>
-                    </a>
-                  </div>
-                </div>
-
-                <div className="w-full md:w-1/2 lg:w-2/5">
-                  {/* Render different mock visuals per active id */}
-                  {active.id === 's1' && (
-                    <div className="bg-slate-50 rounded-lg p-4 h-64 flex flex-col justify-between">
-                      <div className="flex items-center justify-between">
-                        <div className="text-sm font-medium">App Builder</div>
-                        <div className="text-xs text-slate-400">Live</div>
-                      </div>
-                      <div className="flex-1 flex items-center justify-center">
-                        <div className="w-40 h-36 bg-white rounded-md shadow-inner border border-slate-100" />
-                      </div>
-                      <div className="flex items-center justify-between text-xs text-slate-500">
-                        <div>Users: <strong className="text-slate-700">12.3k</strong></div>
-                        <div>Health: <strong className="text-green-600">Good</strong></div>
-                      </div>
-                    </div>
-                  )}
-
-                  {active.id === 's2' && (
-                    <div className="bg-slate-50 rounded-lg p-3 h-64 overflow-auto">
-                      <div className="text-xs text-slate-400 mb-2">Supplier Tracker</div>
-                      <div className="space-y-2">
-                        {[1,2,3,4,5].map(i=> (
-                          <div key={i} className="flex items-center justify-between bg-white p-2 rounded shadow-sm">
-                            <div className="text-sm font-medium">Supplier #{i}</div>
-                            <div className="text-xs text-slate-500">ETA: <strong>2h</strong></div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-
-                  {active.id === 's3' && (
-                    <div className="bg-slate-50 rounded-lg p-3 h-64 flex flex-col justify-between">
-                      <div className="text-xs text-slate-400">Mobile Checkout Preview</div>
-                      <div className="mx-auto w-40 h-44 bg-white rounded-xl shadow flex flex-col">
-                        <div className="flex-1 p-3 text-sm text-slate-700">Customer: Hi, I'd like to buy</div>
-                        <div className="p-3 border-t text-sm text-slate-500 flex items-center justify-between">
-                          <div className="flex items-center gap-2"><span className="h-2 w-2 bg-green-400 rounded-full"/> Verified</div>
-                          <div className="text-indigo-600 font-semibold">Pay →</div>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-
-                  {active.id === 's4' && (
-                    <div className="bg-slate-50 rounded-lg p-4 h-64">
-                      <div className="flex items-center justify-between mb-2">
-                        <div className="text-sm font-medium">Admin Dashboard</div>
-                        <div className="text-xs text-slate-400">Secure</div>
-                      </div>
-                      <div className="grid grid-cols-2 gap-3">
-                        <div className="bg-white rounded p-3 shadow-sm">
-                          <div className="text-xs text-slate-400">Active Sessions</div>
-                          <div className="text-lg font-semibold">1,204</div>
-                        </div>
-                        <div className="bg-white rounded p-3 shadow-sm">
-                          <div className="text-xs text-slate-400">Incidents</div>
-                          <div className="text-lg font-semibold text-rose-500">2</div>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
-          </main>
+        {/* Right: Premium Abstract UI Frames */}
+        <div className="bg-slate-50 border border-slate-100 rounded-2xl p-6 flex items-center justify-center min-h-[300px]">
+          <span className="text-xs font-mono text-slate-400">[ Premium {sector.tabLabel} Dashboard Mockup Frame ]</span>
         </div>
       </div>
-    </section>
-  )
-}
+    </div>
+  );
+};
 
-export default Sectors
+export default function Sectors() {
+  const [activeTab, setActiveTab] = useState("startups");
+
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  };
+
+  return (
+    <div className="w-full max-w-7xl mx-auto px-6 py-24 bg-[#fafafa]">
+      <div className="text-center mb-24">
+        <h2 className="text-xs uppercase tracking-widest text-slate-400 font-semibold mb-3">Sectors We Serve</h2>
+        <p className="text-3xl font-bold text-slate-950">Chosen by Innovators to Build Smarter Futures</p>
+      </div>
+
+      {/* Main Structural Grid Container */}
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-12 items-start relative">
+        
+        {/* STICKY LEFT COLUMN: Stays locked during vertical scroll tracks */}
+        <div className="sticky top-32 flex flex-col space-y-1 border-l border-slate-200 pl-2">
+          {SECTOR_DATA.map((sector) => {
+            const isSelected = activeTab === sector.id;
+            return (
+              <button
+                key={sector.id}
+                onClick={() => {
+                  setActiveTab(sector.id);
+                  scrollToSection(sector.id);
+                }}
+                className={`group relative pl-6 py-3 text-left font-medium transition-all duration-300 outline-none ${
+                  isSelected ? 'text-indigo-600 font-bold' : 'text-slate-400 hover:text-slate-600'
+                }`}
+              >
+                {/* Framer Motion Magic Track Indicator Line */}
+                {isSelected && (
+                  <motion.div
+                    layoutId="activeStickyIndicator"
+                    className="absolute left-[-9px] top-0 bottom-0 w-[3px] bg-indigo-600 rounded-full"
+                    transition={{ type: "spring", stiffness: 300, damping: 28 }}
+                  />
+                )}
+                <span className="text-sm tracking-wide block font-mono text-xs opacity-60 mb-0.5">{sector.num}</span>
+                <span className="text-sm tracking-wide">{sector.tabLabel}</span>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* SCROLLING RIGHT COLUMN: Containers stack vertically */}
+        <div className="md:col-span-3 space-y-12">
+          {SECTOR_DATA.map((sector) => (
+            <SectorCard 
+              key={sector.id} 
+              sector={sector} 
+              onVisible={(id) => setActiveTab(id)} 
+            />
+          ))}
+        </div>
+
+      </div>
+    </div>
+  );
+}
