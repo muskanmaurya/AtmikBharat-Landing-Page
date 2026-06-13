@@ -1,23 +1,33 @@
-import { Rocket } from 'lucide-react'
-import { motion } from 'framer-motion'
+import {motion} from 'framer-motion';
+import { Rocket, Milestone, Star, Users, Activity } from 'lucide-react';
 
-const statVariants = {
+export default function Impact() {
+
+  const statVariants = {
   hidden: { opacity: 0, y: 20 },
   show: { opacity: 1, y: 0 }
 }
-
-const Impact = () => {
   return (
-    <section className="py-12 bg-white">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-8">
-          <h2 className="text-3xl font-extrabold text-slate-800">IMPACT WE'VE CREATED</h2>
-          <p className="text-slate-500 mt-2">Showcasing measurable success, innovation and growth through our impactful solutions.</p>
-        </div>
+    // 1. CHOPPED VERTICAL PADDING: Shrunk from py-28 to py-14 to instantly save major fold height
+    <div className="w-full bg-[#fafafa] py-14 relative overflow-hidden font-sans">
+      
+      {/* Structural Typography Header Section (Tightened margin-bottom from mb-20 to mb-10) */}
+      <div className="text-center mb-10 px-6">
+        <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-indigo-950 bg-indigo-50 border border-indigo-300 px-3 py-1 rounded-full">
+          Proven Metrics
+        </span>
+          <h2 className="text-4xl mt-4 text-center md:text-5xl font-bold text-slate-950">IMPACT WE'VE CREATED</h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {/* Card 1 - Hero Metric spanning 2 columns */}
-          <motion.div
+        <p className="text-md text-slate-500 max-w-xl mx-auto mt-2 leading-relaxed">
+          Showcasing measurable success, innovation, and growth through our impactful solutions.
+        </p>
+      </div>
+
+      {/* 2. TIGHTENED BENTO GRID MATRIX: Reduced max-width to max-w-5xl and dropped gap from 8 to 5 */}
+      <div className="max-w-5xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-5 relative z-10">
+        
+        {/* ROW 1: 1. ₹12Cr+ Cost Saved (Spans 2 Columns — Tightened p-8 to p-6) */}
+        <motion.div
             className="md:col-span-2 bg-slate-950 text-white p-8 rounded-3xl relative overflow-hidden"
             variants={statVariants}
             initial="hidden"
@@ -45,102 +55,95 @@ const Impact = () => {
               <path d="M10 100 L50 70 L90 80 L130 40 L170 50 L210 20" stroke="#10B981" strokeWidth="2" strokeLinecap="round" filter="url(#glow1)" opacity="0.7" />
             </svg>
           </motion.div>
-
-          {/* Card 2 - 150+ */}
-          <motion.div
-            className="bg-white border border-slate-100 p-6 rounded-3xl flex flex-col justify-between"
-            variants={statVariants}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.5, delay: 0.05 }}
-          >
-            <div>
-              <div className="inline-flex items-center gap-3">
-                <div className="bg-blue-600 text-white p-2 rounded-md"><Rocket className="w-4 h-4" /></div>
-                <div className="text-2xl font-bold">150+</div>
-              </div>
-              <div className="text-sm text-slate-500 mt-2">Digital Projects Delivered</div>
-            </div>
-          </motion.div>
-
-          {/* Card 3 - 4.8 ★ */}
-          <motion.div
-            className="bg-white border border-slate-100 p-6 rounded-3xl"
-            variants={statVariants}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-          >
-            <div className="text-2xl font-bold">4.8 <span className="text-amber-400">★</span></div>
-            <div className="text-sm text-slate-500 mt-2">Client Satisfaction</div>
-            <div className="flex items-center gap-1 mt-4" aria-hidden>
-              {[...Array(5)].map((_, i) => (
-                <span key={i} className="w-4 h-4 inline-block text-amber-400">★</span>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Card 4 - 99.9% Uptime */}
-          <motion.div
-            className="bg-white border border-slate-100 p-6 rounded-3xl"
-            variants={statVariants}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.5, delay: 0.15 }}
-          >
-            <div className="text-2xl font-bold">99.9%</div>
-            <div className="text-sm text-slate-500 mt-2">Uptime Across Managed Apps</div>
-
-            <div className="flex gap-2 mt-4" aria-hidden>
-              {[...Array(8)].map((_, i) => (
-                <span key={i} className="w-2 h-2 bg-emerald-500 rounded-full inline-block" />
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Card 5 - 500+ APIs */}
-          <motion.div
-            className="bg-white border border-slate-100 p-6 rounded-3xl"
-            variants={statVariants}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            <div className="text-2xl font-bold">500+</div>
-            <div className="text-sm text-slate-500 mt-2">APIs & Integrations Shipped</div>
-          </motion.div>
-
-          {/* Card 6 - 25M+ spans 2 columns */}
-          <motion.div
-            className="md:col-span-2 bg-slate-50 border border-slate-100 p-8 rounded-3xl flex justify-between items-center"
-            variants={statVariants}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.6 }}
-          >
-            <div>
-              <div className="text-3xl font-extrabold text-slate-800">25M+</div>
-              <div className="text-sm text-slate-600 mt-1">End-users Reached / Served</div>
-            </div>
-
-            {/* small network cluster SVG */}
-            <svg width="84" height="56" viewBox="0 0 84 56" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
-              <circle cx="14" cy="28" r="6" fill="#2563EB" />
-              <circle cx="42" cy="14" r="6" fill="#06B6D4" />
-              <circle cx="70" cy="28" r="6" fill="#34D399" />
-              <circle cx="42" cy="42" r="6" fill="#F59E0B" />
-              <path d="M20 28 L38 16 L64 28 L38 40 L20 28" stroke="#CBD5E1" strokeWidth="1" fill="none" opacity="0.6"/>
-            </svg>
-          </motion.div>
+        {/* ROW 1: 2. 150+ Projects Shipped (Spans 1 Column — Tightened padding) */}
+        <div className="bg-blue-100/30 border border-blue-100/50 rounded-[24px] p-6 flex flex-col justify-between gap-4 group hover:border-blue-200/70 hover:shadow-md transition-all duration-300">
+          <div className="w-9 h-9 rounded-xl bg-blue-600 text-white flex items-center justify-center shadow-md shadow-blue-600/10">
+            <Rocket size={16} />
+          </div>
+          <div className="space-y-0.5">
+            <h3 className="text-2xl font-black text-slate-900 tracking-tight">150+</h3>
+            <p className="text-slate-500 text-[11px] font-medium">Digital Projects Delivered</p>
+          </div>
         </div>
-      </div>
-    </section>
-  )
-}
 
-export default Impact
+        {/* ROW 2: 3. 4.8 Client Satisfaction */}
+        <div className="bg-amber-100/30 border border-amber-100/50 rounded-[24px] p-6 flex flex-col justify-between gap-4 group hover:border-amber-200/70 hover:shadow-md transition-all duration-300">
+          <div className="space-y-0.5">
+            <div className="flex items-baseline gap-1">
+              <h3 className="text-2xl font-black text-slate-900 tracking-tight">4.8</h3>
+              <span className="text-[10px] font-bold text-amber-600">/ 5.0</span>
+            </div>
+            <p className="text-slate-500 text-[11px] font-medium">Client Satisfaction Rating</p>
+          </div>
+
+          <div className="flex items-center space-x-1">
+            {[1, 2, 3, 4].map((star) => (
+              <Star key={star} size={13} className="fill-amber-400 stroke-amber-400" />
+            ))}
+            <div className="relative w-3.5 h-3.5">
+              <Star size={13} className="absolute inset-0 text-slate-200 fill-slate-200 stroke-slate-200" />
+              <div className="absolute inset-0 overflow-hidden" style={{ width: '75%' }}>
+                <Star size={13} className="text-amber-400 fill-amber-400 stroke-amber-400" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* ROW 2: 4. 99.9% Application Uptime */}
+        <div className="bg-emerald-100/30 border border-emerald-100/50 rounded-[24px] p-6 flex flex-col justify-between gap-4 group hover:border-emerald-200/70 hover:shadow-md transition-all duration-300">
+          <div className="space-y-0.5">
+            <h3 className="text-2xl font-black text-slate-900 tracking-tight">99.9%</h3>
+            <p className="text-slate-500 text-[11px] font-medium">Uptime Across Managed Apps</p>
+          </div>
+          
+          <div className="flex items-center gap-1">
+            {[...Array(8)].map((_, i) => (
+              <span key={i} className="w-1.5 h-1.5 rounded-full bg-emerald-500 shadow-sm" />
+            ))}
+          </div>
+        </div>
+
+        {/* ROW 2: 5. 500+ APIs Shipped */}
+        <div className="bg-purple-100/30 border border-purple-100/50 rounded-[24px] p-6 flex flex-col justify-between gap-4 group hover:border-purple-200/70 hover:shadow-md transition-all duration-300">
+          <div className="w-9 h-9 rounded-xl bg-purple-600 text-white flex items-center justify-center shadow-md shadow-purple-600/10">
+            <Milestone size={16} />
+          </div>
+          <div className="space-y-0.5">
+            <h3 className="text-2xl font-black text-slate-900 tracking-tight">500+</h3>
+            <p className="text-slate-500 text-[11px] font-medium">APIs & Integrations Shipped</p>
+          </div>
+        </div>
+
+        {/* ROW 3: 6. 25M+ End-users Reached (Spans 3 Columns — Reduced padding from p-10 to p-5) */}
+        <div className="md:col-span-3 bg-gradient-to-r from-indigo-50/20 via-white to-sky-50/10 border border-slate-200/70 rounded-[24px] p-5 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 group hover:shadow-lg hover:border-slate-300/80 transition-all duration-300 relative overflow-hidden">
+          
+          <div className="space-y-1 relative z-10 flex items-center gap-4">
+            <div className="w-11 h-11 rounded-xl bg-indigo-600 text-white flex items-center justify-center shadow-md hidden sm:flex">
+              <Users size={18} />
+            </div>
+            <div>
+              <h3 className="text-2xl md:text-3xl font-black text-slate-950 tracking-tight">
+                25M+
+              </h3>
+              <p className="text-slate-500 text-[11px] font-medium">
+                End-users Reached / Served Successfully Ecosystem-Wide
+              </p>
+            </div>
+          </div>
+
+          {/* Network Tracking Node Badge */}
+          <div className="bg-white border border-slate-200/60 px-3 py-2 rounded-xl flex items-center gap-2.5 relative z-10 shadow-sm backdrop-blur-sm self-stretch sm:self-auto justify-between">
+            <div className="flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse" />
+              <span className="text-[9px] font-mono font-bold text-slate-700 tracking-wide">NETWORK CONSOLE LINK</span>
+            </div>
+            <Activity size={12} className="text-indigo-600 animate-bounce" />
+          </div>
+          
+          <div className="absolute right-0 bottom-0 w-60 h-60 bg-indigo-500/5 rounded-full blur-[60px] pointer-events-none z-0" />
+        </div>
+
+      </div>
+    </div>
+  );
+}

@@ -1,13 +1,12 @@
 
-
 const Navbar = () => {
   return (
-    <header className="sticky top-0 z-40 bg-gradient-to-b from-[#eef6ff] to-[#f7fbff] shadow-sm">
+    <header className="sticky top-0 z-40 bg-gradient-to-b from-[#bfd3ea] to-[#c7dbee] shadow-sm">
       <div className="max-w-6xl mx-auto flex items-center justify-between px-5 py-3">
         <div className="flex items-center">
           <a href="#home" className="flex items-center gap-3 no-underline">
-            <img src="/logo.jpg" alt="Atmik Bharat" className="w-10 h-10 object-cover rounded-md" />
-            <span className="font-semibold text-slate-900 text-lg">atmikbharat</span>
+            <img src="/src/assets/no-bg-logo.png" alt="Atmik Bharat" className="w-15 object-cover rounded-md" />
+            <span className="font-semibold text-slate-900 text-lg">Atmik Bharat</span>
           </a>
         </div>
 
@@ -41,6 +40,13 @@ const Navbar = () => {
 
             <li><a className="text-slate-600 text-sm px-2 py-1" href="#pricing">Pricing</a></li>
             <li><a className="text-slate-600 text-sm px-2 py-1" href="#enterprise">Enterprise</a></li>
+            {/* <li><a href="#services" className="hover:text-indigo-600 transition-colors">
+  Services
+</a></li>
+            <li>
+<a href="#contact" className="hover:text-indigo-600 transition-colors">
+  Contact
+</a></li> */}
           </ul>
         </nav>
 
@@ -48,7 +54,7 @@ const Navbar = () => {
           <button className="text-xl bg-transparent border-0" aria-label="language">🌐</button>
           <a className="text-slate-600 text-sm" href="#login">Log in</a>
           <a className="text-slate-600 text-sm" href="#book">Book demo</a>
-          <a className="bg-indigo-600 text-white px-4 py-2 rounded-lg font-semibold text-sm" href="#get-started">Get started →</a>
+          <a className="bg-indigo-950 text-white px-4 py-2 rounded-lg font-semibold text-sm" href="#get-started">Get started →</a>
         </div>
       </div>
     </header>

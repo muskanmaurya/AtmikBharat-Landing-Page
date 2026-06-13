@@ -5,16 +5,38 @@ const Footer = () => {
   return (
     <footer className="bg-[#071120] text-slate-200">
       <div className="max-w-7xl mx-auto px-6 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid  grid-cols-1 md:grid-cols-4 gap-8">
           <div>
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 bg-white/10 rounded flex items-center justify-center text-white font-bold"><img src="/public/logo.jpg" alt="Company Logo" className="w-full h-full object-contain" /></div>
-              <div>
-                <img src="/public/no-bg-logo.png" alt="Company Logo" className="w-8 h-full object-contain" />
-                <div className="text-white font-semibold">Atmik Bharat Industries Private Limited</div>
-                <div className="text-sm text-slate-300">Your partner in building innovative, reliable, and scalable technology for startups, enterprises, and government.</div>
-              </div>
-            </div>
+
+            {/* THE BRAND BOX CONTAINER: Vertically stacked layout with controlled max-width */}
+<div className="flex items-start mb-4 flex-col gap-3 max-w-sm select-none">
+  
+  {/* LINE 1: INLINE LOGO + TEXT TRACK (Replicating Synthesia's signature alignment) */}
+  <div className="flex items-center gap-2">
+    {/* Explicit height definition prevents layout shifts during image loading */}
+    <img 
+      src="/src/assets/no-bg-logo.png" 
+      alt="Atmik Bharat Logo" 
+      className="h-13 w-auto object-contain brightness-100" 
+    />
+    
+    {/* Company Name sitting perfectly flush horizontally with the logo center */}
+    <span className="text-white font-bold text-xl tracking-tight leading-none pt-[1px]">
+      Atmik Bharat
+    </span>
+  </div>
+
+  {/* LINE 2: SUBSIDIARY DESIGNATION METADATA TEXT */}
+  <div className="text-sm font-bold uppercase tracking-wider -py-8 text-slate-200 font-mono">
+    Industries Private Limited
+  </div>
+
+  {/* LINE 3: DESCRIPTION BLOCK (Breaks cleanly to its own line without warping your logo row) */}
+  <p className="text-sm text-slate-300 leading-relaxed font-normal">
+    Your partner in building innovative, reliable, and scalable technology for startups, enterprises, and government.
+  </p>
+
+</div>
 
             <div className="flex items-center gap-3 mt-4">
               <a href="#" aria-label="twitter" className="p-2 rounded-full border border-white/10 hover:bg-white/5">
@@ -44,7 +66,7 @@ const Footer = () => {
           <div>
             <h4 className="text-slate-100 font-semibold mb-3">Useful Links</h4>
             <ul className="space-y-2 text-sm text-slate-300">
-              <li><a href="#" className="hover:text-white">Home</a></li>
+              <li><a href="#Home" className="hover:text-white">Home</a></li>
               <li><a href="#" className="hover:text-white">About us</a></li>
               <li><a href="#services" className="hover:text-white">Services</a></li>
               <li><a href="#" className="hover:text-white">Terms of service</a></li>

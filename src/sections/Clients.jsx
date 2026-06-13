@@ -1,18 +1,19 @@
-import React from 'react'
 import cggovt from '../assets/clients/cggovt.webp'
 import deloitte from '../assets/clients/deloitte.webp'
 import divy from '../assets/clients/Divy Solar Power.webp'
 import kpmg from '../assets/clients/kpmg.webp'
+import salesforce from '../assets/clients/salesforce.png'
 
-const logos = [cggovt, deloitte, divy, kpmg]
+const logos = [cggovt, deloitte, divy, kpmg, salesforce, cggovt, deloitte, divy, kpmg, salesforce]
 
 const Clients = () => {
-  const duration = 28 // seconds for full loop
+  const duration = 10 // seconds for full loop
 
   return (
     <section className="py-12 bg-white">
       <div className="max-w-6xl mx-auto px-4">
-        <h3 className="text-center text-sm text-slate-500 mb-6">Trusted by leading enterprises, government bodies and growing startups</h3>
+       <h2 className="text-4xl text-center md:text-5xl font-bold text-slate-950">OUR CLIENTS</h2>
+        <h3 className="text-center text-md text-slate-500 mb-6">Trusted by leading enterprises, government bodies and growing startups</h3>
 
         <div className="overflow-hidden relative">
           <style>{`
@@ -21,10 +22,10 @@ const Clients = () => {
             .marquee-track:hover { animation-play-state: paused; }
           `}</style>
 
-          <div className="marquee-track flex items-center" style={{ gap: '1.5rem' }}>
+          <div className="marquee-track pt-5 flex items-center" style={{ gap: '1.5rem' }}>
             {[...logos, ...logos].map((src, i) => (
-              <div key={i} style={{ flex: '0 0 25%' }} className="flex justify-center items-center">
-                <img src={src} alt={`client-${i}`} className="max-h-14 object-contain opacity-95" />
+              <div key={i} style={{ flex: '0 0 20%' }} className="flex justify-center items-center">
+                <img src={src} alt={`client-${i}`} className="max-h-20 object-contain opacity-95" />
               </div>
             ))}
           </div>

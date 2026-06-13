@@ -35,7 +35,7 @@ const Reviews = () => {
     <section className="py-12 bg-white">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-8">
-          <h2 className="text-3xl font-extrabold text-slate-800">WHAT OUR CLIENTS SAY</h2>
+          <h2 className="text-4xl text-center md:text-5xl font-bold text-slate-950">WHAT OUR CLIENTS SAY</h2>
           <p className="text-slate-500 mt-2">Genuine stories of trust, success, and satisfaction from our clients.</p>
         </div>
 
@@ -59,7 +59,7 @@ const Reviews = () => {
               </div>
 
               <div className="flex items-center gap-1 mb-3" aria-hidden>
-                {Array.from({ length: 5 }).map((_, idx) => {
+                {/* {Array.from({ length: 5 }).map((_, idx) => {
                   const filled = idx < Math.floor(r.stars)
                   const half = r.stars % 1 !== 0 && idx === Math.floor(r.stars)
                   return (
@@ -67,8 +67,35 @@ const Reviews = () => {
                       {filled || half ? <Star className="w-4 h-4 inline-block" /> : <Star className="w-4 h-4 inline-block opacity-30" />}
                     </span>
                   )
-                })}
-                <div className="text-sm text-slate-400 ml-2">{r.stars} / 5</div>
+                })} */}
+
+                {Array.from({ length: 5 }).map((_, idx) => {
+  const filled = idx < Math.floor(r.stars);
+  const half = r.stars % 1 !== 0 && idx === Math.floor(r.stars);
+
+  return (
+    <span key={idx} className="inline-block text-amber-400">
+      {filled ? (
+        // 1. FULLY FILLED STAR: fill-amber-400 makes the inside solid colored
+        <Star className="w-4 h-4 fill-amber-400 stroke-amber-400 inline-block" />
+      ) : half ? (
+        // 2. PERFECT HALF-FILLED STAR: Multi-layered clip-path frame
+        <div className="relative w-4 h-4 inline-block">
+          {/* Background Layer: The empty, faint bordered star base */}
+          <Star size={16} className="absolute left-0 top-1 text-slate-200 fill-slate-200 stroke-slate-200" />
+          {/* Foreground Layer: Clipped at exactly 50% width horizontally */}
+          <div className="absolute -inset-1 left-0 top-1 overflow-hidden" style={{ width: '60%' }}>
+            <Star size={16} className="text-amber-400 fill-amber-400 stroke-amber-400" />
+          </div>
+        </div>
+      ) : (
+        // 3. EMPTY STAR: Smoothly grayed out for unearned rating positions
+        <Star className="w-4 h-4 text-slate-200 fill-slate-200 stroke-slate-200 inline-block" />
+      )}
+    </span>
+  );
+})}
+                <div className="text-sm pt-1.5 text-slate-400 ml-2">{r.stars} / 5</div>
               </div>
 
               <blockquote className="text-slate-600 italic">“{r.text}”</blockquote>
