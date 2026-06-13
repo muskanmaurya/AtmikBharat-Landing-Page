@@ -44,15 +44,8 @@ const Supported = () => {
           {/* THE TRACK: Tripling the unique array ensures an endless line of trailing elements */}
           <div className="supported-track flex items-center" style={{ gap: '3.5rem' }}>
             {[...UNIQUE_LOGOS, ...UNIQUE_LOGOS, ...UNIQUE_LOGOS].map((src, i) => (
-              <div 
-                key={i} 
-                // Using flex-none prevents the browser from squeezing or stretching your image boxes
-                className="flex-none w-40 h-16 flex justify-center items-center"
-              >
-                <img 
-                  src={src} 
-                  alt={`supported-logo-${i}`} 
-                  className="max-h-20 object-contain opacity-95"                />
+              <div key={i} className="flex-none w-28 sm:w-36 md:w-40 flex justify-center items-center">
+                <img src={src} alt={`supported-logo-${i}`} className="max-h-10 sm:max-h-16 md:max-h-20 object-contain opacity-95" />
               </div>
             ))}
           </div>

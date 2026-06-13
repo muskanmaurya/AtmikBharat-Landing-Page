@@ -4,7 +4,7 @@ export default function ContactMap() {
   const mapEmbedUrl = `https://maps.google.com/maps?q=${encodeURIComponent(address)}&t=&z=16&ie=UTF8&iwloc=B&output=embed`;
 
   return (
-    <div className="w-full relative rounded-[28px] overflow-hidden border border-slate-200/60 shadow-inner bg-slate-50 group min-h-[350px] md:min-h-[400px]">
+    <div className="w-full relative rounded-[28px] overflow-hidden border border-slate-200/60 shadow-inner bg-slate-50 group min-h-[220px] md:min-h-[350px]">
       
       {/* Dynamic Asynchronous Loading Overlay State */}
       <div className="absolute inset-0 flex items-center justify-center bg-slate-50 text-slate-400 font-mono text-xs pointer-events-none z-0">

@@ -24,8 +24,8 @@ const Clients = () => {
 
           <div className="marquee-track pt-5 flex items-center" style={{ gap: '1.5rem' }}>
             {[...logos, ...logos].map((src, i) => (
-              <div key={i} style={{ flex: '0 0 20%' }} className="flex justify-center items-center">
-                <img src={src} alt={`client-${i}`} className="max-h-20 object-contain opacity-95" />
+              <div key={i} className="flex justify-center items-center flex-shrink-0 w-1/3 sm:w-1/4 md:w-1/6">
+                <img src={src} alt={`client-${i}`} className="max-h-12 sm:max-h-16 md:max-h-20 object-contain opacity-95" />
               </div>
             ))}
           </div>

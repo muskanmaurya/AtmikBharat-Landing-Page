@@ -132,7 +132,7 @@ const Team = () => {
                 </a>
               </div>
 
-              <div className="w-40 h-56 rounded-md overflow-hidden flex-shrink-0 bg-slate-100">
+              <div className="w-32 sm:w-40 h-44 sm:h-56 rounded-md overflow-hidden flex-shrink-0 bg-slate-100">
                 <img src={f.img} alt={f.name} className="w-full h-full object-cover" />
               </div>
 
@@ -162,10 +162,10 @@ const Team = () => {
 
           <div className="team-track">
             {[...team, ...team].map((m, i) => (
-              <motion.div key={i} className="group relative rounded-lg overflow-hidden border border-slate-100 shadow-sm bg-white w-40 flex-shrink-0"
+              <motion.div key={i} className="group relative rounded-lg overflow-hidden border border-slate-100 shadow-sm bg-white w-32 sm:w-40 flex-shrink-0"
                 initial="hidden" whileInView="show" viewport={{ once: true }} variants={cardAnim} transition={{ duration: 0.5, delay: (i%team.length) * 0.03 }}>
                 <div className="relative">
-                  <img src={m.img} alt={m.name} className="w-full h-56 object-cover" />
+                  <img src={m.img} alt={m.name} className="w-full h-44 sm:h-56 object-cover" />
 
                   <div className="absolute left-0 right-0 bottom-0 p-3 bg-white/30 backdrop-blur-md">
                     <div className="font-semibold text-slate-900 text-sm">{m.name}</div>

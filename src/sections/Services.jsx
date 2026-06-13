@@ -1,5 +1,5 @@
 
-import { Layers, Terminal, BarChart3, Bot, Cpu, Radio, ShieldCheck, ArrowUpRight } from 'lucide-react';
+import { Layers, Terminal, BarChart3, Bot, Cpu, Radio, ShieldCheck} from 'lucide-react';
 
 // Production Mesh Background Assets Installed Here
 import bgMeshWeb from '../assets/services/bluneon.png';
@@ -33,7 +33,7 @@ export default function Services() {
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
         
         {/* ROW 1 (Left + Center): CARD 1 — Web & Mobile App Architecture (Spans 2 Columns) */}
-        <div className="md:col-span-2 bg-white border border-slate-200/70 rounded-[32px] shadow-sm relative overflow-hidden flex flex-col justify-between min-h-[440px] group hover:shadow-xl hover:border-slate-300/80 transition-all duration-300">
+        <div className="md:col-span-2 bg-white border border-slate-200/70 rounded-[32px] shadow-sm relative overflow-hidden flex flex-col justify-between md:min-h-[440px] group hover:shadow-xl hover:border-slate-300/80 transition-all duration-300">
           {/* Production Asset Mesh Render Layer */}
           <img src={bgMeshWeb} alt="" className="absolute inset-0 w-full h-full object-cover opacity-[0.2] pointer-events-none group-hover:scale-102 transition-transform duration-500" />
           <div className="absolute top-0 right-0 w-1/2 h-full opacity-10 bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 pointer-events-none hidden lg:block" />
@@ -81,7 +81,7 @@ export default function Services() {
         </div>
 
         {/* ROW 1 (Right): CARD 2 — API & Plugin Systems (Spans 1 Column) */}
-        <div className="bg-slate-900 text-white rounded-[32px] shadow-sm relative overflow-hidden p-8 md:p-10 flex flex-col justify-between min-h-[440px] group hover:shadow-xl transition-all duration-300">
+        <div className="bg-slate-900 text-white rounded-[32px] shadow-sm relative overflow-hidden p-8 md:p-10 flex flex-col justify-between md:min-h-[440px] group hover:shadow-xl transition-all duration-300">
           {/* Production Asset Mesh Render Layer */}
           <img src={bgMeshApi} alt="" className="absolute inset-0 w-full h-full object-cover opacity-50 pointer-events-none group-hover:scale-105 transition-transform duration-500" />
           <div className="absolute inset-0 bg-gradient-to-tr from-purple-900/40 via-slate-950 to-indigo-900/30 opacity-90 z-0 pointer-events-none" />
@@ -105,7 +105,7 @@ export default function Services() {
         </div>
 
         {/* ROW 2 (Left): CARD 3 — Analytics Insights (Spans 1 Column) */}
-        <div className="bg-white border border-slate-200/70 rounded-[32px] shadow-sm relative overflow-hidden p-8 md:p-10 flex flex-col justify-between min-h-[380px] group hover:shadow-xl hover:border-slate-300/80 transition-all duration-300">
+        <div className="bg-white border border-slate-200/70 rounded-[32px] shadow-sm relative overflow-hidden p-8 md:p-10 flex flex-col justify-between md:min-h-[380px] group hover:shadow-xl hover:border-slate-300/80 transition-all duration-300">
           {/* Production Asset Mesh Render Layer */}
           <img src={bgMeshAnalytics} alt="" className="absolute inset-0 w-full h-full object-cover opacity-50 pointer-events-none group-hover:scale-105 transition-transform duration-500" />
           <div className="absolute inset-0 bg-gradient-to-br from-sky-50/20 via-white to-blue-50/30 opacity-60 pointer-events-none" />
@@ -134,7 +134,7 @@ export default function Services() {
         </div>
 
         {/* ROW 2 (Center + Right): CARD 4 — AI & Chatbot Ecosystems (Spans 2 Columns) */}
-        <div className="md:col-span-2 bg-white border border-slate-200/70 rounded-[32px] shadow-sm relative overflow-hidden p-8 md:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center min-h-[380px] group hover:shadow-xl hover:border-slate-300/80 transition-all duration-300">
+        <div className="md:col-span-2 bg-white border border-slate-200/70 rounded-[32px] shadow-sm relative overflow-hidden p-8 md:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center md:min-h-[380px] group hover:shadow-xl hover:border-slate-300/80 transition-all duration-300">
           {/* Production Asset Mesh Render Layer */}
           <img src={bgMeshAi} alt="" className="absolute inset-0 w-full h-full object-cover opacity-50 pointer-events-none group-hover:scale-102 transition-transform duration-500" />
           <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-teal-100 via-teal-100 to-indigo-50/20 pointer-events-none" />
@@ -179,7 +179,7 @@ export default function Services() {
 
         {/* NEW PERFECT ALIGNMENT ROW LAYER BLOCK */}
         {/* ROW 3 (Left): CARD 5 — Custom Solutions (Spans 1 Column) */}
-        <div className="bg-white border border-slate-200/70 rounded-[32px] shadow-sm relative overflow-hidden p-8 md:p-10 flex flex-col justify-between min-h-[380px] group hover:shadow-xl hover:border-slate-300/80 transition-all duration-300">
+        <div className="bg-white border border-slate-200/70 rounded-[32px] shadow-sm relative overflow-hidden p-8 md:p-10 flex flex-col justify-between md:min-h-[380px] group hover:shadow-xl hover:border-slate-300/80 transition-all duration-300">
           {/* Subtle Ambient Background Gradient Placeholder Layer */}
           <div className="absolute inset-0 bg-gradient-to-br from-amber-100 via-white to-orange-200 opacity-80 pointer-events-none" />
           
@@ -203,7 +203,7 @@ export default function Services() {
 
         {/* ROW 3 (Center + Right): CARD 6 — Wide Cloud Integration Banner (Spans 2 Columns) */}
         {/* CRITICAL ARCHITECTURAL CHANGE: Shifted from md:col-span-3 to md:col-span-2 to pull it up next to Card 5 */}
-        <div className="md:col-span-2 bg-gradient-to-r from-slate-950 via-slate-900 to-indigo-950 text-white p-8 md:p-10 rounded-[32px] shadow-2xl relative overflow-hidden flex flex-col justify-between min-h-[380px] border border-slate-800/60 group hover:shadow-xl transition-all duration-300">
+        <div className="md:col-span-2 bg-gradient-to-r from-slate-950 via-slate-900 to-indigo-950 text-white p-8 md:p-10 rounded-[32px] shadow-2xl relative overflow-hidden flex flex-col justify-between md:min-h-[380px] border border-slate-800/60 group hover:shadow-xl transition-all duration-300">
           
           <div className="space-y-4 max-w-xl relative z-10">
             <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-indigo-400 bg-indigo-500/10 border border-indigo-400/20 px-3 py-1 rounded-full">

@@ -66,7 +66,7 @@ export default function Gallery() {
       </div>
 
       {/* THE VIEWPORT STAGE: Strictly hides overflowing card movements */}
-      <div className="relative aspect-[16/10] w-full bg-slate-900 rounded-[32px] border border-slate-200/80 p-3 shadow-2xl overflow-hidden group">
+      <div className="relative aspect-[9/16] sm:aspect-[16/10] md:aspect-[16/9] w-full bg-slate-900 rounded-[32px] border border-slate-200/80 p-3 shadow-2xl overflow-hidden group">
         
         {/* Sleek Inner Browser Chrome Header Frame */}
         <div className="absolute top-0 inset-x-0 h-12 bg-slate-950/80 backdrop-blur-md z-30 px-6 flex items-center justify-between border-b border-b-slate-800">

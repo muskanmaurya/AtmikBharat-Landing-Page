@@ -312,7 +312,7 @@ const SectorCard = ({ sector, onVisible }) => {
               key={idx}
               // subtle theme gradient behind each sub-card (no typography/layout changes)
               className={`rounded-3xl border p-6 md:p-7 flex flex-col justify-between transition-all duration-300 relative overflow-hidden hover:shadow-lg group ${
-                sub.isLarge ? 'md:col-span-2 lg:col-span-2 min-h-[220px]' : 'min-h-[200px]'
+                sub.isLarge ? 'md:col-span-2 lg:col-span-2 md:min-h-[220px] min-h-[160px]' : 'md:min-h-[200px] min-h-[140px]'
               } ${sub.color} ${sector.borderGlow}`}
             >
               <div className={`absolute inset-0 bg-gradient-to-br ${sector.themeGradient} pointer-events-none z-0`} />

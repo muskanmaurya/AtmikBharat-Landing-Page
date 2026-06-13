@@ -17,7 +17,7 @@ const Footer = () => {
     <img 
       src="/src/assets/no-bg-logo.png" 
       alt="Atmik Bharat Logo" 
-      className="h-13 w-auto object-contain brightness-100" 
+      className="h-10 sm:h-12 w-auto object-contain brightness-100" 
     />
     
     {/* Company Name sitting perfectly flush horizontally with the logo center */}
