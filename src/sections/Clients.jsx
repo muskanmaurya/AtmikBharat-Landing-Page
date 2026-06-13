@@ -2,7 +2,7 @@ import cggovt from '../assets/clients/cggovt.webp'
 import deloitte from '../assets/clients/deloitte.webp'
 import divy from '../assets/clients/Divy Solar Power.webp'
 import kpmg from '../assets/clients/kpmg.webp'
-import salesforce from '../assets/clients/salesforce.png'
+import salesforce from '../assets/clients/Salesforce.png'
 
 const logos = [cggovt, deloitte, divy, kpmg, salesforce, cggovt, deloitte, divy, kpmg, salesforce]
 
