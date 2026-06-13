@@ -4,7 +4,7 @@ import rubi from '../assets/supported/rubi.webp'
 import sfc from '../assets/supported/sfc.webp'
 import deloitte from '../assets/clients/deloitte.webp'
 import iitd from '../assets/supported/iitd.webp'
-import salesforce from '../assets/clients/salesforce.png'
+import salesforce from '../assets/clients/Salesforce.png'
 import meta from '../assets/supported/meta.png'
 
 // 1. CLEAN SINGLE BASE LIST (Each item appears exactly once)
